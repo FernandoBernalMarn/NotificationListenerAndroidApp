@@ -26,17 +26,17 @@ public class listenerService extends NotificationListenerService {
     // Method to detect when service is created (when the user enable service).
     @Override
     public void onCreate(){
-        showNotification(true);
+
+        mSocket.connect();
 
         // Method to detect when this device is connect to server using Socket.io
         mSocket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-            mSocket.emit("high","Android device connected...");
+            mSocket.emit("message","Android device connected...");
+            showNotification(true);
             }
         });
-
-        mSocket.connect();
     }
 
     //Method to detect when service is destroy (when the user disable service).
@@ -88,7 +88,7 @@ public class listenerService extends NotificationListenerService {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("https://...herokuapp.com/");
+            mSocket = IO.socket("https://nameless-castle-1186.herokuapp.com/");
         } catch (URISyntaxException e) {}
     }
 }
