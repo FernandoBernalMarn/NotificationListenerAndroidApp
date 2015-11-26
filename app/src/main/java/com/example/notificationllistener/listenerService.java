@@ -88,7 +88,7 @@ public class listenerService extends NotificationListenerService {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("https://nameless-castle-1186.herokuapp.com/");
+            mSocket = IO.socket("https://...herokuapp.com/");
         } catch (URISyntaxException e) {}
     }
 }
